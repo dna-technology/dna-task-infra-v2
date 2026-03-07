@@ -14,3 +14,28 @@ variable "availability_zones" {
   type        = list(string)
   default     = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
 }
+
+# ECS Variables
+variable "container_image" {
+  description = "Docker image for ECS task"
+  type        = string
+  default     = "hashicorp/http-echo:latest"
+}
+
+variable "ecs_task_cpu" {
+  description = "CPU units for ECS task (1024 = 1 vCPU)"
+  type        = string
+  default     = "256"
+}
+
+variable "ecs_task_memory" {
+  description = "Memory for ECS task in MB"
+  type        = string
+  default     = "512"
+}
+
+variable "ecs_service_desired_count" {
+  description = "Desired number of ECS tasks"
+  type        = number
+  default     = 1
+}
