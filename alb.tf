@@ -50,7 +50,7 @@ resource "aws_lb" "main" {
 # Target Group
 resource "aws_lb_target_group" "app" {
   name        = "${module.this.id}-tg"
-  port        = 5678
+  port        = 8080
   protocol    = "HTTP"
   vpc_id      = aws_vpc.main.id
   target_type = "ip"
@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "app" {
     unhealthy_threshold = 3
     timeout             = 5
     interval            = 30
-    path                = "/"
+    path                = "/actuator/health"
     protocol            = "HTTP"
     matcher             = "200-399"
   }

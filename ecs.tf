@@ -31,8 +31,8 @@ resource "aws_security_group" "ecs_tasks" {
 
   ingress {
     description     = "Allow traffic from ALB"
-    from_port       = 5678
-    to_port         = 5678
+    from_port       = 8080
+    to_port         = 8080
     protocol        = "tcp"
     security_groups = [aws_security_group.alb.id]
   }
@@ -65,18 +65,19 @@ resource "aws_ecs_task_definition" "app" {
 
   container_definitions = jsonencode([
     {
-      name      = "http-echo"
+      name      = "spring-cloud-dataflow"
       image     = var.container_image
       essential = true
 
       command = [
-        "-text=Hello from ECS!",
-        "-listen=:5678"
+        "--bind=0.0.0.0",
+        "--listen=8080",
+        "--url=postgres://${var.db_username}:${var.db_password}@${aws_db_instance.main.address}:5432/${var.db_name}?sslmode=require"
       ]
 
       portMappings = [
         {
-          containerPort = 5678
+          containerPort = 8080
           protocol      = "tcp"
         }
       ]
@@ -103,6 +104,14 @@ resource "aws_ecs_service" "app" {
   desired_count   = var.ecs_service_desired_count
   launch_type     = "FARGATE"
 
+  deployment_circuit_breaker {
+    enable   = true
+    rollback = true
+  }
+
+  deployment_maximum_percent         = 200
+  deployment_minimum_healthy_percent = 100
+
   network_configuration {
     subnets          = aws_subnet.private[*].id
     security_groups  = [aws_security_group.ecs_tasks.id]
@@ -111,8 +120,8 @@ resource "aws_ecs_service" "app" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.app.arn
-    container_name   = "http-echo"
-    container_port   = 5678
+    container_name   = "spring-cloud-dataflow"
+    container_port   = 8080
   }
 
   depends_on = [aws_lb_listener.http]

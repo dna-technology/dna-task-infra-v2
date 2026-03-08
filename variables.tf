@@ -19,7 +19,7 @@ variable "availability_zones" {
 variable "container_image" {
   description = "Docker image for ECS task"
   type        = string
-  default     = "hashicorp/http-echo:latest"
+  default     = "sosedoff/pgweb:latest"
 }
 
 variable "ecs_task_cpu" {
@@ -38,4 +38,23 @@ variable "ecs_service_desired_count" {
   description = "Desired number of ECS tasks"
   type        = number
   default     = 1
+}
+
+# RDS Variables
+variable "db_name" {
+  description = "Database name"
+  type        = string
+  default     = "appdb"
+}
+
+variable "db_username" {
+  description = "Database master username"
+  type        = string
+  default     = "dbadmin"
+}
+
+variable "db_password" {
+  description = "Database master password"
+  type        = string
+  sensitive   = true
 }
