@@ -85,29 +85,29 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NET-01 | — | Pending |
-| NET-02 | — | Pending |
-| NET-03 | — | Pending |
-| ECS-01 | — | Pending |
-| ECS-02 | — | Pending |
-| ECS-03 | — | Pending |
-| ECS-04 | — | Pending |
-| ECS-05 | — | Pending |
-| ALB-01 | — | Pending |
-| ALB-02 | — | Pending |
-| ALB-03 | — | Pending |
-| SEC-01 | — | Pending |
-| SEC-02 | — | Pending |
-| SEC-03 | — | Pending |
-| OBS-01 | — | Pending |
-| OUT-01 | — | Pending |
-| OUT-02 | — | Pending |
+| NET-01 | Phase 1: Private Networking | Pending |
+| NET-02 | Phase 1: Private Networking | Pending |
+| NET-03 | Phase 1: Private Networking | Pending |
+| SEC-01 | Phase 2: Security Groups | Pending |
+| SEC-02 | Phase 2: Security Groups | Pending |
+| SEC-03 | Phase 2: Security Groups | Pending |
+| ALB-01 | Phase 3: Load Balancing | Pending |
+| ALB-02 | Phase 3: Load Balancing | Pending |
+| ALB-03 | Phase 3: Load Balancing | Pending |
+| ECS-01 | Phase 4: ECS Service | Pending |
+| ECS-02 | Phase 4: ECS Service | Pending |
+| ECS-03 | Phase 4: ECS Service | Pending |
+| ECS-04 | Phase 4: ECS Service | Pending |
+| ECS-05 | Phase 4: ECS Service | Pending |
+| OBS-01 | Phase 4: ECS Service | Pending |
+| OUT-01 | Phase 4: ECS Service | Pending |
+| OUT-02 | Phase 4: ECS Service | Pending |
 
 **Coverage:**
 - v1 requirements: 17 total
-- Mapped to phases: 0
-- Unmapped: 17
+- Mapped to phases: 17
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-17*
-*Last updated: 2026-03-17 after initial definition*
+*Last updated: 2026-03-17 after roadmap creation*
