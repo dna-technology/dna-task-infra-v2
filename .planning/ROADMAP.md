@@ -25,10 +25,10 @@ Deploy a containerized application on ECS Fargate behind an Application Load Bal
   1. `terraform plan` shows NAT Gateway resource with an Elastic IP in a public subnet
   2. `terraform plan` shows a route table with a `0.0.0.0/0` route pointing to the NAT Gateway
   3. All 3 private subnets are associated with the NAT Gateway route table (verified via `terraform plan` or `terraform state show`)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 01-01: TBD
+- [ ] 01-01-PLAN.md — NAT Gateway, Elastic IP, private route table, and subnet associations
 
 ### Phase 2: Security Groups
 **Goal**: Network access controls exist that allow ALB to receive internet HTTP traffic and ECS tasks to accept traffic only from the ALB
